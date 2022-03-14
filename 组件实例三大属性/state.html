@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <dev id="box"></dev>
+
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 创建类组件
+        class Weather extends React.Component{
+            constructor(props){ 
+                super(props)
+                this.state = {isHot:true}
+                this.changeWeather = this.changeWeather.bind(this)
+            }
+
+            render(){
+                const {isHot} = this.state
+                console.log(this)
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+            }
+
+            changeWeather(){
+                this.setState({isHot:!this.state.isHot})
+            }
+        }
+        ReactDOM.render(<Weather/>,document.getElementById('box'))
+    </script>
+    
+</body>
+</html>
